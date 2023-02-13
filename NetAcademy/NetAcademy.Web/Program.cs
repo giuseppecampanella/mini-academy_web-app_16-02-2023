@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using NetAcademy.Domain;
 using NetAcademy.Domain.Models.Configuration;
 using NetAcademy.Repositories;
@@ -65,10 +64,10 @@ try
 
     // SQL SERVER
     builder.Services.AddScoped<IConcessionsRepository, ConcessionsSqlDatabaseRepository>();
-    builder.Services.AddScoped<IExtCountriesRepository, ExtCountriesSqlDatabaseRepository>();
+    builder.Services.AddScoped<ICountriesRepository, CountriesSqlDatabaseRepository>();
 
     builder.Services.AddTransient<ConcessionsService>();
-    builder.Services.AddTransient<ExtCountriesService>();
+    builder.Services.AddTransient<CountriesService>();
     builder.Services.AddTransient<ExcelService>();
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

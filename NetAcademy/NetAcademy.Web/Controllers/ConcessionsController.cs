@@ -74,11 +74,11 @@ public class ConcessionsController : ControllerBase
         return File(writingStream.ToArray(), "application/octet-stream", "concessions.xlsx");
     }
 
-    [HttpGet("file/concession-ext-countries")]
-    public async Task<object> SaveConcessionsAndExtCountriesToExcel()
+    [HttpGet("file/concession-countries")]
+    public async Task<object> SaveConcessionsAndCountriesToExcel()
     {
         using var writingStream = new MemoryStream();
-        await excelService.SaveConcessionsAndExtCountriesToExcel(writingStream);
-        return File(writingStream.ToArray(), "application/octet-stream", "concessionsExtCountries.xlsx");
+        await excelService.SaveConcessionsAndCountriesToExcel(writingStream);
+        return File(writingStream.ToArray(), "application/octet-stream", "concessionsCountries.xlsx");
     }
 }

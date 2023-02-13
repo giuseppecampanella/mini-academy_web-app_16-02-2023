@@ -2,11 +2,11 @@
 
 namespace NetAcademy.Repositories.SqlModels;
 
-internal class ExtCountry
+internal class Country
 {
-    internal ExtCountry()
+    internal Country()
     {
-        this.Concessions = new HashSet<ExtCountryConcession>();
+        this.Concessions = new HashSet<CountryConcession>();
     }
 
     [Key]
@@ -14,5 +14,5 @@ internal class ExtCountry
     public string CountryName { get; set; } = null!;
     //public string CountryCode { get; set; } = null!;
 
-    public virtual ICollection<ExtCountryConcession> Concessions { get; set; } = null!;
+    public virtual ICollection<CountryConcession> Concessions { get; set; } = null!;
 }

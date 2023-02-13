@@ -44,14 +44,14 @@ public class ConcessionsSqlDatabaseRepository : IConcessionsRepository
 
     public async Task DeleteConcessionByCountryIdAsync(string countryId)
     {
-        await context.ExtCountryConcessions
-            .Where(ecc => ecc.ExtCountry.CountryId == countryId)
-            .ForEachAsync(ecc => context.ExtCountryConcessions.Remove(ecc));
+        await context.CountryConcessions
+            .Where(ecc => ecc.Country.CountryId == countryId)
+            .ForEachAsync(ecc => context.CountryConcessions.Remove(ecc));
 
-        //var items = (from extCountriesConcession in context.ExtCountryConcessions                  
-        //             where extCountriesConcession.CountryId == countryId
-        //             select extCountriesConcession).ToList();
-        //items.ForEach(c => context.ExtCountryConcessions.Remove(c));
+        //var items = (from countriesConcession in context.CountryConcessions                  
+        //             where countriesConcession.CountryId == countryId
+        //             select countriesConcession).ToList();
+        //items.ForEach(c => context.CountryConcessions.Remove(c));
 
         await context.SaveChangesAsync();
     }
@@ -86,19 +86,19 @@ public class ConcessionsSqlDatabaseRepository : IConcessionsRepository
 
     public async Task AssociateConcessionToCountry(AssociateConcessionDto dto)
     {
-        ExtCountryConcession extCountryConcession = new() { ConcessionId = dto.ConcessionId, CountryId = dto.CountryId };
-        await context.ExtCountryConcessions.AddAsync(extCountryConcession);
+        CountryConcession countryConcession = new() { ConcessionId = dto.ConcessionId, CountryId = dto.CountryId };
+        await context.CountryConcessions.AddAsync(countryConcession);
 
         //or
-        //Concession? concession = await context.Concessions.Include(c => c.ExtCountry).FirstOrDefaultAsync(c => c.ConcessionId == dto.ConcessionId);
-        //if(concession is not null && concession.ExtCountry is null)
+        //Concession? concession = await context.Concessions.Include(c => c.Country).FirstOrDefaultAsync(c => c.ConcessionId == dto.ConcessionId);
+        //if(concession is not null && concession.Country is null)
         //{
-        //    concession.ExtCountry = new() { CountryId = dto.CountryId, ConcessionId = dto.ConcessionId };
+        //    concession.Country = new() { CountryId = dto.CountryId, ConcessionId = dto.ConcessionId };
         //}
 
         //or
-        //ExtCountry extCountry = await context.ExtCountries.FindAsync(dto.CountryId);
-        //extCountry.Concessions.Add(new() { ConcessionId = dto.ConcessionId, CountryId = dto.CountryId });
+        //Country country = await context.countries.FindAsync(dto.CountryId);
+        //country.Concessions.Add(new() { ConcessionId = dto.ConcessionId, CountryId = dto.CountryId });
 
         await context.SaveChangesAsync();
     }

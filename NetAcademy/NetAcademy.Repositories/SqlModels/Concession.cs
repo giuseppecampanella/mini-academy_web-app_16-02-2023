@@ -8,6 +8,6 @@ internal class Concession
     public string ConcessionId { get; set; } = null!;
     public string ConcessionName { get; set; } = null!;
 
-    public virtual ExtCountryConcession ExtCountry { get; set; } = null!;
+    public virtual CountryConcession Country { get; set; } = null!;
 
 }

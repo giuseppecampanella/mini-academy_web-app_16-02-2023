@@ -1,20 +1,16 @@
-﻿using NetAcademy.Domain.Models.DTOs;
-using NetAcademy.Repository.Interfaces;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using NPOI.XWPF.UserModel;
+﻿using NetAcademy.Repository.Interfaces;
 
 namespace NetAcademy.Services;
 
 public class ExcelService
 {
     private readonly IConcessionsRepository concessionsRepository;
-    private readonly IExtCountriesRepository extCountriesRepository;
+    private readonly ICountriesRepository countriesRepository;
 
-    public ExcelService(IConcessionsRepository concessionsRepository, IExtCountriesRepository extCountriesRepository)
+    public ExcelService(IConcessionsRepository concessionsRepository, ICountriesRepository countriesRepository)
     {
         this.concessionsRepository = concessionsRepository;
-        this.extCountriesRepository = extCountriesRepository;
+        this.countriesRepository = countriesRepository;
     }
 
     // Exercise
@@ -24,9 +20,9 @@ public class ExcelService
     }
 
     // Exercise
-    public async Task LoadAllExtCountriesAsync()
+    public async Task LoadAllCountriesAsync()
     {
-        // TODO: leggere le extCountry da file excel e salvare tutto su db
+        // TODO: leggere le country da file excel e salvare tutto su db
     }
 
     // Exercise
@@ -36,9 +32,9 @@ public class ExcelService
     }
 
     // Exercise
-    public async Task SaveConcessionsAndExtCountriesToExcel(Stream writingStream)
+    public async Task SaveConcessionsAndCountriesToExcel(Stream writingStream)
     {
-        // TODO salvare concessions e countries che si trovano dentro la tabella ExtCountryConcession
+        // TODO salvare concessions e countries che si trovano dentro la tabella CountryConcession
     }
 
 }

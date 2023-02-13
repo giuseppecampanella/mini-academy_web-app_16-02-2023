@@ -6,12 +6,12 @@ namespace NetAcademy.Web.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ExtCountriesController : ControllerBase
+public class CountriesController : ControllerBase
 {
-    private readonly ILogger<ExtCountriesController> logger;
-    private readonly ExtCountriesService concessionService;
+    private readonly ILogger<CountriesController> logger;
+    private readonly CountriesService concessionService;
     private readonly ExcelService excelService;
-    public ExtCountriesController(ILogger<ExtCountriesController> log, ExtCountriesService concessionService, ExcelService excelService)
+    public CountriesController(ILogger<CountriesController> log, CountriesService concessionService, ExcelService excelService)
     {
         logger = log;
         this.concessionService = concessionService;
@@ -19,38 +19,38 @@ public class ExtCountriesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ExtCountryDto?> GetExtCountryAsync(string id)
+    public async Task<CountryDto?> GetCountryAsync(string id)
     {
-        return await concessionService.GetExtCountryAsync(id);
+        return await concessionService.GetCountryAsync(id);
     }
 
     [HttpPut("{id}")]
-    public async Task UpdateExtCountryAsync(string id, [FromBody] ExtCountryDto dto)
+    public async Task UpdateCountryAsync(string id, [FromBody] CountryDto dto)
     {
-        await concessionService.UpdateExtCountryAsync(id, dto);
+        await concessionService.UpdateCountryAsync(id, dto);
     }
 
     [HttpDelete("{id}")]
-    public async Task DeleteExtCountryAsync(string id)
+    public async Task DeleteCountryAsync(string id)
     {
-        await concessionService.DeleteExtCountryAsync(id);
+        await concessionService.DeleteCountryAsync(id);
     }
 
     [HttpPost("")]
-    public async Task CreateNewExtCountryAsync(ExtCountryDto dto)
+    public async Task CreateNewCountryAsync(CountryDto dto)
     {
-        await concessionService.CreateNewExtCountryAsync(dto);
+        await concessionService.CreateNewCountryAsync(dto);
     }
 
     [HttpGet("")]
-    public async Task<List<ExtCountryDto>> GetAllExtCountriesAsync()
+    public async Task<List<CountryDto>> GetAllCountriesAsync()
     {
-        return await concessionService.GetAllExtCountriesAsync();
+        return await concessionService.GetAllCountriesAsync();
     }
 
     [HttpGet("load")]
-    public async Task LoadAllExtCountriesAsync()
+    public async Task LoadAllCountriesAsync()
     {
-        await excelService.LoadAllExtCountriesAsync();
+        await excelService.LoadAllCountriesAsync();
     }
 }

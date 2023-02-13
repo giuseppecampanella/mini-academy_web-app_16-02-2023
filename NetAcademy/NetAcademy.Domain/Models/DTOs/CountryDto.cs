@@ -2,7 +2,7 @@
 
 namespace NetAcademy.Domain.Models.DTOs;
 
-public class ExtCountryDto
+public class CountryDto
 {
     [JsonPropertyName("country_id")]
     public string CountryId { get; set; } = null!;

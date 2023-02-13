@@ -1,9 +1,9 @@
 ﻿namespace NetAcademy.Repositories.SqlModels;
 
-internal class ExtCountryConcession
+internal class CountryConcession
 {
     public string CountryId { get; set; }
     public string ConcessionId { get; set; }
-    public virtual ExtCountry ExtCountry { get; set; } = null!;
+    public virtual Country Country { get; set; } = null!;
     public virtual Concession Concession { get; set; } = null!;
 }

@@ -9,8 +9,8 @@ public class XwareContext : DbContext
 
 
     internal DbSet<Concession> Concessions { get; set; }
-    internal DbSet<ExtCountry> ExtCountries { get; set; }
-    internal DbSet<ExtCountryConcession> ExtCountryConcessions { get; set; }
+    internal DbSet<Country> Countries { get; set; }
+    internal DbSet<CountryConcession> CountryConcessions { get; set; }
 
     public XwareContext() { }
 
@@ -29,29 +29,29 @@ public class XwareContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ExtCountryConcession>().ToTable("ExtCountryConcession");
-        modelBuilder.Entity<ExtCountry>().ToTable("ExtCountry");
+        modelBuilder.Entity<CountryConcession>().ToTable("CountryConcession");
+        modelBuilder.Entity<Country>().ToTable("Country");
         modelBuilder.Entity<Concession>().ToTable("Concession");
 
         // create a compound key
-        modelBuilder.Entity<ExtCountryConcession>()
+        modelBuilder.Entity<CountryConcession>()
             .HasKey(sc => new { sc.CountryId, sc.ConcessionId });
 
-        modelBuilder.Entity<ExtCountryConcession>()
-            .HasOne(ecc => ecc.ExtCountry)
+        modelBuilder.Entity<CountryConcession>()
+            .HasOne(ecc => ecc.Country)
             .WithMany(ec => ec.Concessions)
             .HasForeignKey(ecc => ecc.CountryId);
 
-        modelBuilder.Entity<ExtCountryConcession>()
+        modelBuilder.Entity<CountryConcession>()
             .HasOne(ecc => ecc.Concession)
-            .WithOne(c => c.ExtCountry);
+            .WithOne(c => c.Country);
 
-        modelBuilder.Entity<ExtCountry>()
+        modelBuilder.Entity<Country>()
             .HasMany(ec => ec.Concessions)
-            .WithOne(c => c.ExtCountry);
+            .WithOne(c => c.Country);
 
         modelBuilder.Entity<Concession>()
-            .HasOne(c => c.ExtCountry)
+            .HasOne(c => c.Country)
             .WithOne(ec => ec.Concession);
     }
 }

@@ -6,7 +6,7 @@ namespace NetAcademy.Repositories.Extensions
     internal static class SqlModelsExtensions
     {
 
-        public static ExtCountry? ToSqlModel(this ExtCountryDto e)
+        public static Country? ToSqlModel(this CountryDto e)
         {
             if (e == null) return null;
             return new()
@@ -17,7 +17,7 @@ namespace NetAcademy.Repositories.Extensions
             };
         }
 
-        public static ExtCountryDto? ToDto(this ExtCountry e)
+        public static CountryDto? ToDto(this Country e)
         {
             if (e == null) return null;
             return new()
