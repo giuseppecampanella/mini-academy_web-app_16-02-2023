@@ -66,7 +66,6 @@ try
     // SQL SERVER
     builder.Services.AddScoped<IConcessionsRepository, ConcessionsSqlDatabaseRepository>();
     builder.Services.AddScoped<IExtCountriesRepository, ExtCountriesSqlDatabaseRepository>();
-    builder.Services.AddScoped<IExtCountriesConcessionsRepository, ExtCountriesConcessionsRepository>();
 
     builder.Services.AddTransient<ConcessionsService>();
     builder.Services.AddTransient<ExtCountriesService>();
