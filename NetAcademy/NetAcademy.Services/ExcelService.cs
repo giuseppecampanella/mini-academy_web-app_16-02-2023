@@ -17,31 +17,10 @@ public class ExcelService
         this.extCountriesRepository = extCountriesRepository;
     }
 
+    // Exercise
     public async Task LoadAllConcessionsAsync()
     {
-        List<ConcessionDto> concessions = new();
-
-        XSSFWorkbook xssfwb;
-        using (FileStream file = new("Files/data.xlsx", FileMode.Open, FileAccess.Read))
-        {
-            xssfwb = new XSSFWorkbook(file);
-        }
-
-        ISheet sheet = xssfwb.GetSheet("Concessions");
-        for (int row = 1; row <= sheet.LastRowNum; row++)
-        {
-            if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
-            {
-                ConcessionDto concession = new()
-                {
-                    ConcessionId = sheet.GetRow(row).GetCell(0).StringCellValue,
-                    ConcessionName = sheet.GetRow(row).GetCell(1).StringCellValue,
-                };
-                concessions.Add(concession);
-            }
-        }
-
-        await concessionsRepository.CreateNewConcessionsAsync(concessions);
+        // TODO: leggere le concessions da file excel e salvare tutto su db
     }
 
     // Exercise
